@@ -5,6 +5,7 @@ public class Checkout : ICheckout
     private int _total = 0;
     private int _countOfA = 0;
     private int _countOfB = 0;
+    private int _itemCount = 0;
     private readonly Dictionary<string, int> _priceList = new()
     {
         { "A", 50 },
@@ -23,11 +24,17 @@ public class Checkout : ICheckout
 
     private int CalculateBagFee()
     {
+        if (_itemCount == 6)
+        {
+            return 10;
+        }
+
         return 5;
     }
 
     public void Scan(string item)
     {
+        _itemCount++;
         _total += _priceList[item];
         
         if (item == "A")
