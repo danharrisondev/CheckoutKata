@@ -2,6 +2,7 @@
 
 public class Checkout : ICheckout
 {
+    private readonly IBagFeeCalculator _bagFeeCalculator;
     private int _total = 0;
     private int _countOfA = 0;
     private int _countOfB = 0;
@@ -14,6 +15,11 @@ public class Checkout : ICheckout
         { "D", 15 }
     };
 
+    public Checkout(IBagFeeCalculator bagFeeCalculator)
+    {
+        _bagFeeCalculator = bagFeeCalculator;
+    }
+
     public int GetTotalPrice()
     {
         var discountA = _countOfA / 3 * 20;
@@ -24,7 +30,7 @@ public class Checkout : ICheckout
 
     private int CalculateBagFee()
     {
-        return (int)Math.Ceiling(_itemCount / 5.0) * 5;
+        return _bagFeeCalculator.GetBagFee(_itemCount);
     }
 
     public void Scan(string item)

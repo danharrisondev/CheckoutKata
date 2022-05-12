@@ -12,7 +12,7 @@ public class CheckoutTests
     [TestCase("AAAAAA", 260)]
     public void Can_calculate_price_for_A(string items, int expectedPrice)
     {
-        var checkout = new Checkout();
+        var checkout = new Checkout(new FreeBagCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
@@ -24,7 +24,7 @@ public class CheckoutTests
     [TestCase("BBBB", 90)]
     public void Can_calculate_price_for_B(string items, int expectedPrice)
     {
-        var checkout = new Checkout();
+        var checkout = new Checkout(new FreeBagCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
@@ -34,7 +34,7 @@ public class CheckoutTests
     [TestCase("CC", 40)]
     public void Can_calculate_price_for_C(string items, int expectedPrice)
     {
-        var checkout = new Checkout();
+        var checkout = new Checkout(new FreeBagCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
@@ -44,7 +44,7 @@ public class CheckoutTests
     [TestCase("DD", 30)]
     public void Can_calculate_price_for_D(string items, int expectedPrice)
     {
-        var checkout = new Checkout();
+        var checkout = new Checkout(new FreeBagCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
@@ -62,25 +62,7 @@ public class CheckoutTests
     [TestCase("AAAABBBBCCDDAA", 420)]
     public void Can_calculate_price_for_multiple_items_in_any_order(string items, int expectedPrice)
     {
-        var checkout = new Checkout();
-        foreach (var item in items)
-            checkout.Scan(item.ToString());
-        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
-    }
-
-    [TestCase("A", 55)]
-    [TestCase("AA", 105)]
-    [TestCase("AAA", 135)]
-    [TestCase("AAAA", 185)]
-    [TestCase("AAAAA", 235)]
-    [TestCase("AAAAAA", 270)]
-    [TestCase("AAAAAAAAAAA", 505)]
-    [TestCase("AAAAAAAAAAAAAAAA", 720)]
-    [TestCase("AAA", 135)]
-    [TestCase("AAABC", 185)]
-    public void Can_calculate_bag_fee(string items, int expectedPrice)
-    {
-        var checkout = new Checkout();
+        var checkout = new Checkout(new FreeBagCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
