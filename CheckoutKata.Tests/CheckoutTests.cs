@@ -83,7 +83,9 @@ public class Checkout : ICheckout
 
     public int GetTotalPrice()
     {
-        return _total;
+        var discountA = (_countOfA / 3) * 20;
+        var discountB = (_countOfB / 2) * 15;
+        return _total - discountA - discountB;
     }
 
     public void Scan(string item)
@@ -92,21 +94,11 @@ public class Checkout : ICheckout
         {
             _total += 50;
             _countOfA += 1;
-            if (_countOfA == 3)
-            {
-                _total -= 20;
-                _countOfA = 0;
-            }
         }
         if (item == "B")
         {
             _total += 30;
             _countOfB += 1;
-            if (_countOfB == 2)
-            {
-                _total -= 15;
-                _countOfB = 0;
-            }
         }
         if (item == "C")
             _total += 20;
