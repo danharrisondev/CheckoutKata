@@ -24,21 +24,14 @@ public class CheckoutTests
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
     }
 
-    [Test]
-    public void Can_calculate_price_for_single_C()
+    [TestCase("C", 20)]
+    [TestCase("CC", 40)]
+    public void Can_calculate_price_for_C(string items, int expectedPrice)
     {
         var checkout = new Checkout();
-        checkout.Scan("C");
-        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(20));
-    }
-
-    [Test]
-    public void Can_calculate_price_for_multiple_C()
-    {
-        var checkout = new Checkout();
-        checkout.Scan("C");
-        checkout.Scan("C");
-        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(40));
+        foreach (var item in items)
+            checkout.Scan(item.ToString());
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
     }
 
     [Test]
