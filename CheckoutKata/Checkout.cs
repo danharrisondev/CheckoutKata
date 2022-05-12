@@ -24,22 +24,7 @@ public class Checkout : ICheckout
 
     private int CalculateBagFee()
     {
-        if (_itemCount == 6)
-        {
-            return 10;
-        }
-
-        if (_itemCount == 11)
-        {
-            return 15;
-        }
-
-        if (_itemCount == 16)
-        {
-            return 20;
-        }
-
-        return 5;
+        return (int)Math.Ceiling(_itemCount / 5.0) * 5;
     }
 
     public void Scan(string item)
