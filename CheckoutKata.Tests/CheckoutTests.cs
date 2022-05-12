@@ -19,7 +19,9 @@ public class CheckoutTests
     }
 
     [TestCase("B", 30)]
-    [TestCase("BB", 60)]
+    [TestCase("BB", 45)]
+    [TestCase("BBB", 75)]
+    [TestCase("BBBB", 90)]
     public void Can_calculate_price_for_B(string items, int expectedPrice)
     {
         var checkout = new Checkout();
