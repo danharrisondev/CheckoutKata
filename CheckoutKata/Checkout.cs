@@ -34,6 +34,11 @@ public class Checkout : ICheckout
             return 15;
         }
 
+        if (_itemCount == 16)
+        {
+            return 20;
+        }
+
         return 5;
     }
 
