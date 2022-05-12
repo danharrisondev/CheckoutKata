@@ -20,6 +20,14 @@ public class CheckoutTests
         checkout.Scan("A");
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(100));
     }
+
+    [Test]
+    public void Can_calculate_price_for_B()
+    {
+        var checkout = new Checkout();
+        checkout.Scan("B");
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(30));
+    }
 }
 
 public interface ICheckout
