@@ -5,7 +5,7 @@ public class Checkout : ICheckout
     private int _total = 0;
     private int _countOfA = 0;
     private int _countOfB = 0;
-    private readonly Dictionary<string, int> _priceList = new Dictionary<string, int>
+    private readonly Dictionary<string, int> _priceList = new()
     {
         { "A", 50 },
         { "B", 30 },
