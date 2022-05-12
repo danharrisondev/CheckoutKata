@@ -83,6 +83,7 @@ public class CheckoutTests
 
     [TestCase("AAAAAA", 270)]
     [TestCase("AAAAAAAAAAA", 505)]
+    [TestCase("AAAAAAAAAAAAAAAA", 720)]
     public void Can_calculate_multiple_bag_fee(string items, int expectedPrice)
     {
         var checkout = new Checkout();
