@@ -38,15 +38,18 @@ public interface ICheckout
 
 public class Checkout : ICheckout
 {
-    private int _items = 0;
+    private int _total = 0;
 
     public int GetTotalPrice()
     {
-        return _items * 50;
+        return _total;
     }
 
     public void Scan(string item)
     {
-        _items++;
+        if (item == "A")
+            _total += 50;
+        if (item == "B")
+            _total += 30;
     }
 }
