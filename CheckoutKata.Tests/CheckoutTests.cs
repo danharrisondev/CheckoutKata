@@ -49,6 +49,20 @@ public class CheckoutTests
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
     }
+
+    [TestCase("AABCCDD", 200)]
+    [TestCase("AAABBCCDD", 245)]
+    [TestCase("AAAAABBCCDD", 345)]
+    [TestCase("AAAAAABBCCDD", 375)]
+    [TestCase("AAAAAABBBBCCDD", 420)]
+    public void Can_calculate_price_for_multiple_item_types(string items, int expectedPrice)
+    {
+        var checkout = new Checkout();
+        foreach (var item in items)
+            checkout.Scan(item.ToString());
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
+    }
+
 }
 
 public interface ICheckout
