@@ -6,22 +6,13 @@ public class CheckoutTests
 {
     [TestCase("A", 50)]
     [TestCase("AA", 100)]
+    [TestCase("AAA", 130)]
     public void Can_calculate_price_for_A(string items, int expectedPrice)
     {
         var checkout = new Checkout();
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
-    }
-
-    [Test]
-    public void Can_calculate_deal_for_A()
-    {
-        var checkout = new Checkout();
-        checkout.Scan("A");
-        checkout.Scan("A");
-        checkout.Scan("A");
-        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(130));
     }
 
     [TestCase("B", 30)]
