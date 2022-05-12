@@ -87,5 +87,7 @@ public class Checkout : ICheckout
             _total += 30;
         if (item == "C")
             _total += 20;
+        if (item == "D")
+            _total += 15;
     }
 }
