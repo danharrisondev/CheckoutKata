@@ -24,13 +24,8 @@ public class Checkout : ICheckout
     {
         var discountA = _countOfA / 3 * 20;
         var discountB = _countOfB / 2 * 15;
-        var bagFee = CalculateBagFee();
+        var bagFee = _bagFeeCalculator.GetBagFee(_itemCount);
         return _total - discountA - discountB + bagFee;
-    }
-
-    private int CalculateBagFee()
-    {
-        return _bagFeeCalculator.GetBagFee(_itemCount);
     }
 
     public void Scan(string item)
