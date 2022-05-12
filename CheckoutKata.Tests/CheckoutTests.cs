@@ -12,7 +12,7 @@ public class CheckoutTests
     [TestCase("AAAAAA", 260)]
     public void Can_calculate_price_for_A(string items, int expectedPrice)
     {
-        var checkout = new Checkout(new FreeBagCalculator());
+        var checkout = new Checkout(new FreeBagFeeCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
@@ -24,7 +24,7 @@ public class CheckoutTests
     [TestCase("BBBB", 90)]
     public void Can_calculate_price_for_B(string items, int expectedPrice)
     {
-        var checkout = new Checkout(new FreeBagCalculator());
+        var checkout = new Checkout(new FreeBagFeeCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
@@ -34,7 +34,7 @@ public class CheckoutTests
     [TestCase("CC", 40)]
     public void Can_calculate_price_for_C(string items, int expectedPrice)
     {
-        var checkout = new Checkout(new FreeBagCalculator());
+        var checkout = new Checkout(new FreeBagFeeCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
@@ -44,7 +44,7 @@ public class CheckoutTests
     [TestCase("DD", 30)]
     public void Can_calculate_price_for_D(string items, int expectedPrice)
     {
-        var checkout = new Checkout(new FreeBagCalculator());
+        var checkout = new Checkout(new FreeBagFeeCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
@@ -62,7 +62,7 @@ public class CheckoutTests
     [TestCase("AAAABBBBCCDDAA", 420)]
     public void Can_calculate_price_for_multiple_items_in_any_order(string items, int expectedPrice)
     {
-        var checkout = new Checkout(new FreeBagCalculator());
+        var checkout = new Checkout(new FreeBagFeeCalculator());
         foreach (var item in items)
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));

@@ -1,6 +1,6 @@
 ﻿namespace CheckoutKata;
 
-public class FreeBagCalculator : IBagFeeCalculator
+public class FreeBagFeeCalculator : IBagFeeCalculator
 {
     public int GetBagFee(int itemCount)
     {
