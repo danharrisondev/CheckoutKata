@@ -17,7 +17,13 @@ public class Checkout : ICheckout
     {
         var discountA = _countOfA / 3 * 20;
         var discountB = _countOfB / 2 * 15;
-        return _total - discountA - discountB;
+        var bagFee = CalculateBagFee();
+        return _total - discountA - discountB + bagFee;
+    }
+
+    private int CalculateBagFee()
+    {
+        return 5;
     }
 
     public void Scan(string item)
