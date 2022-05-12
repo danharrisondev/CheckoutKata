@@ -4,21 +4,14 @@ namespace CheckoutKata.Tests;
 
 public class CheckoutTests
 {
-    [Test]
-    public void Can_calculate_price_for_A()
+    [TestCase("A", 50)]
+    [TestCase("AA", 100)]
+    public void Can_calculate_price_for_A(string items, int expectedPrice)
     {
         var checkout = new Checkout();
-        checkout.Scan("A");
-        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(50));
-    }
-
-    [Test]
-    public void Can_calculate_price_for_multiple_A()
-    {
-        var checkout = new Checkout();
-        checkout.Scan("A");
-        checkout.Scan("A");
-        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(100));
+        foreach (var item in items)
+            checkout.Scan(item.ToString());
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
     }
 
     [Test]
