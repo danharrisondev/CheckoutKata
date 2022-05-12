@@ -14,6 +14,16 @@ public class CheckoutTests
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
     }
 
+    [Test]
+    public void Can_calculate_deal_for_A()
+    {
+        var checkout = new Checkout();
+        checkout.Scan("A");
+        checkout.Scan("A");
+        checkout.Scan("A");
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(130));
+    }
+
     [TestCase("B", 30)]
     [TestCase("BB", 60)]
     public void Can_calculate_price_for_B(string items, int expectedPrice)
