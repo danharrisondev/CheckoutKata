@@ -28,6 +28,15 @@ public class CheckoutTests
         checkout.Scan("B");
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(30));
     }
+
+    [Test]
+    public void Can_calculate_price_for_multiple_B()
+    {
+        var checkout = new Checkout();
+        checkout.Scan("B");
+        checkout.Scan("B");
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(60));
+    }
 }
 
 public interface ICheckout
