@@ -64,6 +64,7 @@ public interface ICheckout
 public class Checkout : ICheckout
 {
     private int _total = 0;
+    private int _countOfA = 0;
 
     public int GetTotalPrice()
     {
@@ -73,7 +74,14 @@ public class Checkout : ICheckout
     public void Scan(string item)
     {
         if (item == "A")
+        {
             _total += 50;
+            _countOfA += 1;
+            if (_countOfA == 3)
+            {
+                _total -= 20;
+            }
+        }
         if (item == "B")
             _total += 30;
         if (item == "C")
