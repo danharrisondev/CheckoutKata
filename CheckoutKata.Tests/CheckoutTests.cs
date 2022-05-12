@@ -7,6 +7,9 @@ public class CheckoutTests
     [TestCase("A", 50)]
     [TestCase("AA", 100)]
     [TestCase("AAA", 130)]
+    [TestCase("AAAA", 180)]
+    [TestCase("AAAAA", 230)]
+    [TestCase("AAAAAA", 260)]
     public void Can_calculate_price_for_A(string items, int expectedPrice)
     {
         var checkout = new Checkout();
