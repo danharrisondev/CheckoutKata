@@ -42,7 +42,7 @@ public class CheckoutTests
 
     [TestCase("D", 15)]
     [TestCase("DD", 30)]
-    public void Can_calculate_price_for_single_D(string items, int expectedPrice)
+    public void Can_calculate_price_for_D(string items, int expectedPrice)
     {
         var checkout = new Checkout();
         foreach (var item in items)
