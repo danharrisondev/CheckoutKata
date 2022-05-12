@@ -61,7 +61,7 @@ public class CheckoutTests
     [TestCase("BAAAAAABCCDD", 375)]
     [TestCase("AAAAAABBBBCCDD", 420)]
     [TestCase("AAAABBBBCCDDAA", 420)]
-    public void Can_calculate_price_for_multiple_items(string items, int expectedPrice)
+    public void Can_calculate_price_for_multiple_items_in_any_order(string items, int expectedPrice)
     {
         var checkout = new Checkout();
         foreach (var item in items)
