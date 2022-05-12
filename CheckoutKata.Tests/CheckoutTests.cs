@@ -61,6 +61,7 @@ public class Checkout : ICheckout
 {
     private int _total = 0;
     private int _countOfA = 0;
+    private int _countOfB = 0;
 
     public int GetTotalPrice()
     {
@@ -80,7 +81,15 @@ public class Checkout : ICheckout
             }
         }
         if (item == "B")
+        {
             _total += 30;
+            _countOfB += 1;
+            if (_countOfB == 2)
+            {
+                _total -= 15;
+                _countOfB = 0;
+            }
+        }
         if (item == "C")
             _total += 20;
         if (item == "D")
