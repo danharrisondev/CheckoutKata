@@ -74,6 +74,7 @@ public class Checkout : ICheckout
             if (_countOfA == 3)
             {
                 _total -= 20;
+                _countOfA = 0;
             }
         }
         if (item == "B")
