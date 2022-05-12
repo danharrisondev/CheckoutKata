@@ -30,13 +30,15 @@ public interface ICheckout
 
 public class Checkout : ICheckout
 {
+    private int _items = 0;
+
     public int GetTotalPrice()
     {
-        return 50;
+        return _items * 50;
     }
 
     public void Scan(string item)
     {
-        
+        _items++;
     }
 }
