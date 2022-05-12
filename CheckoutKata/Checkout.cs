@@ -15,8 +15,8 @@ public class Checkout : ICheckout
 
     public int GetTotalPrice()
     {
-        var discountA = (_countOfA / 3) * 20;
-        var discountB = (_countOfB / 2) * 15;
+        var discountA = _countOfA / 3 * 20;
+        var discountB = _countOfB / 2 * 15;
         return _total - discountA - discountB;
     }
 
