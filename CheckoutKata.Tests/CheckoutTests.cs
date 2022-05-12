@@ -81,16 +81,12 @@ public class CheckoutTests
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
     }
 
-    [Test]
-    public void Can_calculate_multiple_bag_fee()
+    [TestCase("AAAAAA", 270)]
+    public void Can_calculate_multiple_bag_fee(string items, int expectedPrice)
     {
         var checkout = new Checkout();
-        checkout.Scan("A");
-        checkout.Scan("A");
-        checkout.Scan("A");
-        checkout.Scan("A");
-        checkout.Scan("A");
-        checkout.Scan("A");
-        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(270));
+        foreach (var item in items)
+            checkout.Scan(item.ToString());
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
     }
 }
