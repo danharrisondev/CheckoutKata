@@ -80,4 +80,17 @@ public class CheckoutTests
             checkout.Scan(item.ToString());
         Assert.That(checkout.GetTotalPrice(), Is.EqualTo(expectedPrice));
     }
+
+    [Test]
+    public void Can_calculate_multiple_bag_fee()
+    {
+        var checkout = new Checkout();
+        checkout.Scan("A");
+        checkout.Scan("A");
+        checkout.Scan("A");
+        checkout.Scan("A");
+        checkout.Scan("A");
+        checkout.Scan("A");
+        Assert.That(checkout.GetTotalPrice(), Is.EqualTo(270));
+    }
 }
